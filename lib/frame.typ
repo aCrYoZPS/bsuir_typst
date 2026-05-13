@@ -40,13 +40,17 @@
 //  - font : шрифт в основной надписи (визуально в СТП используется Arial,
 //           хотя по ГОСТу может потребоваться "GOST Type B")
 //  - stroke: толщина рамки страницы (1pt, или 0pt, если рамка не нужна, напр. для плаката)
+//  - caption_left: переместить основную надпись на левую сторону
 //  - content: содержимое рамки
-#let frame(type:"a", paper:"a4",flipped:false, config: default-config, stroke:1pt, font:"Arial", content) = {
+#let frame(type:"a", paper:"a4",flipped:false, config: default-config, stroke:1pt, font:"Arial", caption_left: false, content) = {
+
+  let (margin-left, margin-right) = if caption_left { (5mm, 20mm) } else { (20mm, 5mm) }
+  let pos-align = if caption_left { left } else { right }
 
   set page(
-    // п. 3.1.3 : расстояние от границы формата 20мм слева 
-    //            и 5 мм сверху, справа, снизу
-    margin: (left: 20mm, right: 5mm, top: 5mm, bottom: 5mm),
+    // п. 3.1.3 : расстояние от границы формата 20мм со стороны переплета
+    //            и 5 мм сверху, справа (слева для левой рамки), снизу
+    margin: (left: margin-left, right: margin-right, top: 5mm, bottom: 5mm),
     paper: paper,
     flipped: flipped,
   )
@@ -152,7 +156,7 @@
 
   rect(stroke:stroke, inset:0%, {
     block(width: 100%, height: 100%,inset: stroke, content)
-    place(bottom+right, block(fill:white,main-caption(config)))
+    place(bottom+pos-align, block(fill:white,main-caption(config)))
   })
 
 }
