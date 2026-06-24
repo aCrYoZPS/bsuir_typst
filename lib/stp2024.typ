@@ -466,6 +466,28 @@
       set align(center)
       block(upper(body.body), spacing : 2.3em)
     }
+
+    show outline.entry: it => {
+      link(
+        it.element.location(),
+        grid(
+          columns: (auto, 1fr, auto),
+          align: (auto, auto, right+bottom),
+          it.indented(
+            it.prefix(),
+            none,
+          ), {
+            it.body()
+            sym.space
+            box(width: 1fr, it.fill)
+          }, {
+            sym.space
+            it.page()
+          }
+        )
+      )
+    }
+
     set text(
       hyphenate: false
     )
