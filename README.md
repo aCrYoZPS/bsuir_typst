@@ -77,8 +77,13 @@
 
 ## Требования 
 
-В системе должны быть установлены `Times New Roman`, `Courier New` и `TeX Gyre Termes Math` ( [ссылка](https://mirrors.ctan.org/fonts/tex-gyre-math/opentype/texgyretermes-math.otf), выбран в качестве наиболее 
-близкого к Times New Roman шрифта с поддержкой математики), `XITS Math` (для русского языка в индексах в формулах) и непосредственно Typst.
+В системе должен быть установлен Typst и следующие шрифты:
+
+- `Times New Roman`
+- `Courier New`
+- `TeX Gyre Termes Math` ([ссылка](https://mirrors.ctan.org/fonts/tex-gyre-math/opentype/texgyretermes-math.otf), выбран в качестве наиболее близкого к Times New Roman шрифта с поддержкой математики)
+- `XITS Math` (для русского языка в индексах в формулах)
+- `GOST Type B` (если нужен для рамки, есть в папке `fonts/`)
 
 ## Сборка
 
