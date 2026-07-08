@@ -471,6 +471,32 @@
       set align(center)
       block(upper(body.body), spacing : 2.3em)
     }
+
+    // Длинное название в содержании перед переносом на
+    // новую строку может залезть на колонку с номерами страниц.
+    // Исправим это с помощью grid, строго отделяющей область
+    // с названием от области с номером страницы.
+    show outline.entry: it => {
+      link(
+        it.element.location(),
+        grid(
+          columns: (auto, 1fr, auto),
+          align: (auto, auto, right+bottom),
+          it.indented(
+            it.prefix(),
+            none,
+          ), {
+            it.body()
+            sym.space
+            box(width: 1fr, it.fill)
+          }, {
+            sym.space
+            it.page()
+          }
+        )
+      )
+    }
+
     set text(
       hyphenate: false
     )
