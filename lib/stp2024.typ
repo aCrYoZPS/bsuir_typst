@@ -439,7 +439,11 @@
   show math.equation : set block(above : 1.55em, below : 2.3em)
 
   // Приложение Ф : Используем шрифт, близкий к используемому в образце.
-  show math.equation : set text(font: "TeX Gyre Termes Math", style : "italic")
+  show math.equation : set text(
+    font: ("TeX Gyre Termes Math","XITS Math" ),
+    fallback: true,
+    style : "italic"
+  )
 
   // п. 2.9.1,
   // п. 2.9.2 : Оформление сносок
